@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap');
+
 :root {
   --cream: #f8f4ec;
   --ink: #1f2320;
@@ -16,7 +18,7 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--ink);
-  font-family: Arial, sans-serif;
+  font-family: 'Source Sans 3', Arial, sans-serif;
   line-height: 1.6;
 }
 
@@ -31,7 +33,7 @@ header {
 }
 
 .logo {
-  font-family: Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 28px;
   letter-spacing: 1px;
 }
@@ -66,7 +68,7 @@ main {
 }
 
 h1, h2, h3 {
-  font-family: Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: normal;
 }
 
