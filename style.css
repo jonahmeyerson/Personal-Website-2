@@ -1,156 +1,433 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
 :root {
-  --cream: #f8f4ec;
-  --ink: #1f2320;
-  --muted: #6f6a5f;
-  --burgundy: #7a3e2b;
-  --green: #5b6750;
-  --border: #c8bda9;
-  --card: #fffaf0;
+  --blue: #0057ff;
+  --red: #b90000;
+  --beige: #e8ded2;
+  --blue-page: #a9cdfa;
+  --card: #f6eee9;
+  --white: #ffffff;
+  --text: #000000;
+  --muted: #555555;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'Source Sans 3', Arial, sans-serif;
-  line-height: 1.6;
+  font-family: "Nunito", sans-serif;
+  color: var(--text);
+  background: var(--beige);
 }
 
-header {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 32px 24px;
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  min-height: 110px;
+  padding: 0 56px;
+  background: var(--white);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border);
+  justify-content: space-between;
 }
 
-.logo {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.brand-name {
   font-size: 28px;
+  font-weight: 900;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand-title {
+  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-nav a {
-  margin-left: 20px;
-  color: var(--ink);
+.blue-square {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: var(--blue);
+  flex: 0 0 auto;
+}
+
+.red-square {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+  flex: 0 0 auto;
+}
+
+.site-nav {
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--blue);
+}
+
+.page-section {
+  min-height: calc(100vh - 110px);
+  padding: 80px 56px;
+}
+
+/* ABOUT / HOME PAGE */
+
+.about-section {
+  display: grid;
+  grid-template-columns: 430px 1fr;
+  gap: 70px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.profile-card {
+  background: var(--card);
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.profile-photo {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 55px;
+}
+
+.profile-card h1 {
+  font-size: 32px;
+  line-height: 1.05;
+  margin: 28px 0 20px;
+  font-weight: 900;
+}
+
+.small-line {
+  width: 48px;
+  height: 3px;
+  background: var(--blue);
+  margin: 0 auto 28px;
+}
+
+.profile-title {
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: 15px;
+  margin-bottom: 48px;
+}
+
+.social-links {
+  background: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+}
+
+.social-links a {
+  color: var(--text);
+  font-weight: 800;
   text-decoration: none;
   font-size: 14px;
 }
 
-nav a:hover {
-  color: var(--burgundy);
+.intro-content h2 {
+  font-size: 88px;
+  line-height: 0.95;
+  margin: 0 0 24px;
+  font-weight: 900;
 }
 
-main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 100px 24px;
+.intro-tagline {
+  font-size: 28px;
+  margin-bottom: 36px;
 }
 
-.hero {
-  text-align: center;
-  padding: 120px 0;
+.intro-content p {
+  font-size: 19px;
+  line-height: 1.55;
+  max-width: 560px;
 }
 
-.eyebrow {
-  color: var(--burgundy);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 12px;
-}
-
-h1, h2, h3 {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: normal;
-}
-
-h1 {
-  font-size: 64px;
-  line-height: 1.05;
-  margin: 16px 0;
-}
-
-h2 {
-  font-size: 36px;
-  margin-top: 0;
-}
-
-.intro {
-  max-width: 650px;
-  margin: 0 auto;
-  color: var(--muted);
-  font-size: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 36px;
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  padding: 28px;
-  min-height: 180px;
-}
-
-.card h3 {
-  margin-top: 0;
+.button-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 34px;
 }
 
 .button {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 18px;
-  border: 1px solid var(--ink);
-  color: var(--ink);
+  padding: 10px 22px;
+  border-radius: 999px;
   text-decoration: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
-.button:hover {
-  background: var(--ink);
-  color: var(--cream);
+.primary-button {
+  background: var(--blue);
+  color: var(--white);
+  border: 2px solid var(--blue);
 }
 
-.page-title {
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 24px;
+.secondary-button {
+  background: var(--white);
+  color: var(--text);
+  border: 2px solid var(--text);
+}
+
+/* GENERAL CONTENT PAGES */
+
+.content-section {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.content-section h2 {
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-intro {
+  font-size: 20px;
   margin-bottom: 40px;
 }
 
-.resume-section {
-  margin-bottom: 40px;
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+.work-card,
+.resume-card {
+  background: var(--white);
+  padding: 36px;
+}
+
+.video-placeholder,
+.large-video-placeholder {
+  background: #d6d6d6;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.large-video-placeholder {
+  min-height: 460px;
+}
+
+/* SEGMENTS / PORTFOLIO STYLE PAGES */
+
+.portfolio-page {
+  background: var(--blue-page);
+  max-width: none;
+  margin: 0;
+  padding-top: 70px;
+  padding-bottom: 90px;
+}
+
+.portfolio-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.portfolio-page h1 {
+  font-size: 24px;
+  line-height: 1;
+  margin: 0 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portfolio-page h1 .blue-square {
+  width: 12px;
+  height: 12px;
+  background: var(--red);
+}
+
+.portfolio-intro {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 32px;
+}
+
+.media-row {
+  background: #fff8f2;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  margin-bottom: 34px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.media-copy {
+  padding: 28px;
+  border-left: 6px solid var(--red);
+}
+
+.media-copy h2 {
+  font-size: 17px;
+  line-height: 1.1;
+  margin: 0 0 8px;
+  font-weight: 900;
+}
+
+.media-role {
+  font-weight: 800;
+  font-size: 12px;
+  margin: 0 0 18px;
+}
+
+.media-copy p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.media-video {
+  background: #e8ded2;
+}
+
+.media-video video {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* RESUME */
+
+.resume-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.resume-card {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 50px;
+  margin-bottom: 34px;
+}
+
+.resume-card h3 {
+  color: var(--blue);
+  font-size: 24px;
+  margin-top: 0;
+}
+
+/* CONTACT */
+
+.contact-section a {
+  color: var(--blue);
+}
+
+/* FOOTER */
+
+.site-footer {
+  background: var(--white);
+  padding: 28px 56px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .site-header {
+    min-height: auto;
+    padding: 28px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-content h2 {
+    font-size: 58px;
+  }
+
+  .card-grid,
+  .resume-card {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 @media (max-width: 700px) {
-  header {
-    display: block;
+  .page-section {
+    padding: 50px 24px;
   }
 
-  nav {
-    margin-top: 20px;
+  .brand {
+    flex-wrap: wrap;
   }
 
-  nav a {
-    display: block;
-    margin: 8px 0;
+  .brand-name {
+    font-size: 24px;
   }
 
-  h1 {
-    font-size: 42px;
+  .brand-title {
+    font-size: 14px;
   }
 
-  .grid {
+  .portfolio-inner {
+    max-width: 100%;
+  }
+
+  .media-row {
     grid-template-columns: 1fr;
+  }
+
+  .media-video video {
+    min-height: 220px;
   }
 }

@@ -1,49 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jonah Meyerson</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonah Meyerson | About Me</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-
-<header>
-  <a class="logo" href="index.html">Jonah Meyerson</a>
-
-  <nav>
-    <a href="about.html">About</a>
-    <a href="work.html">Work</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main>
-
-  <section class="hero">
-
-    <p class="eyebrow">
-      Television Producer • Creative • Storyteller
-    </p>
-
-    <h1>
-      Bringing ideas from rough drafts to finished work.
-    </h1>
-
-    <p class="intro">
-      I'm Jonah Meyerson, a television producer and creative with experience
-      across late-night television, comedy, research, production, and
-      creative development.
-    </p>
-
-    <div class="hero-buttons">
-      <a class="button" href="work.html">View Work</a>
-      <a class="button" href="contact.html">Contact</a>
+  <header class="site-header">
+    <div class="brand">
+      <span class="blue-square"></span>
+      <a href="index.html" class="brand-name">Jonah Meyerson</a>
+      <span class="slash">/</span>
+      <span class="brand-title">Producer</span>
     </div>
 
-  </section>
+    <nav class="site-nav">
+      <a href="index.html" class="active">About Me</a>
+      <a href="segments.html">Segments</a>
+      <a href="animations.html">Animations</a>
+      <a href="reel.html">Reel</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-</main>
+  <main>
+    <section class="page-section about-section">
+      <div class="profile-card">
+        <img src="images/profile.jpg" alt="Jonah Meyerson" class="profile-photo" />
 
+        <h1>Jonah<br />Meyerson</h1>
+
+        <div class="small-line"></div>
+
+        <p class="profile-title">Producer</p>
+
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="mailto:your-email@example.com" aria-label="Email">Email</a>
+        </div>
+      </div>
+
+      <div class="intro-content">
+        <h2>Welcome</h2>
+        <p class="intro-tagline">Producer, storyteller, fundraiser, and creative generalist.</p>
+
+        <p>
+          I’m Jonah Meyerson. I’ve spent my career working at the intersection of storytelling,
+          media, nonprofit development, and creative production. This site collects selected
+          segments, animations, reel material, and professional background from my work across
+          television, fundraising, and mission-driven organizations.
+        </p>
+
+        <div class="button-row">
+          <a href="reel.html" class="button primary-button">View Reel</a>
+          <a href="segments.html" class="button secondary-button">See Work</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 by Jonah Meyerson.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
