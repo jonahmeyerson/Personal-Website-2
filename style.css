@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Elms+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --blue: #0057ff;
-  --red: #b90000;
-  --beige: #e8ded2;
-  --blue-page: #a9cdfa;
-  --card: #f6eee9;
-  --white: #ffffff;
-  --text: #000000;
-  --muted: #555555;
+  --accent: #31a8ff;
+  --accent-dark: #0b0f14;
+
+  --photoshop-blue: #31a8ff;
+  --premiere-purple: #9999ff;
+  --animation-red: #ff3366;
+  --illustrator-orange: #ff9a2f;
+  --animate-green: #7bd23c;
+  --resume-yellow: #ffd84d;
+  --stock-white: #f5f5f5;
+
+  --background: #111315;
+  --background-soft: #1a1d20;
+  --panel: #232629;
+  --panel-light: #2b2f33;
+  --card: #1f2327;
+
+  --text: #f4f4f2;
+  --muted: #b5b8bc;
+  --subtle: #7f858c;
+  --line: #343941;
+  --shadow: rgba(0, 0, 0, 0.38);
 }
 
 * {
@@ -21,18 +35,25 @@ html {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Elms Sans", sans-serif;
   color: var(--text);
-  background: var(--beige);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 13%, transparent), transparent 28%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 9%, transparent), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.035), transparent 26%),
+    var(--background);
+  font-weight: 400;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
-  min-height: 110px;
+  min-height: 104px;
   padding: 0 56px;
-  background: var(--white);
+  background: rgba(17, 19, 21, 0.92);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,74 +63,151 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .brand-name {
   font-size: 28px;
-  font-weight: 900;
+  font-weight: 800;
   color: var(--text);
   text-decoration: none;
 }
 
+.brand-name:hover {
+  color: var(--accent);
+  text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
 .brand-title {
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0.04em;
 }
 
-.blue-square {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  background: var(--blue);
-  flex: 0 0 auto;
+.slash {
+  color: var(--subtle);
 }
 
+.blue-square,
 .red-square {
   display: inline-block;
-  width: 12px;
-  height: 12px;
-  background: var(--red);
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 50%, transparent);
   flex: 0 0 auto;
 }
 
 .site-nav {
   display: flex;
-  gap: 28px;
+  gap: 26px;
   font-size: 15px;
-  text-transform: uppercase;
+  font-weight: 400;
 }
 
 .site-nav a {
-  color: var(--text);
+  color: var(--muted);
   text-decoration: none;
+  transition: color 0.18s ease, text-shadow 0.18s ease;
 }
 
 .site-nav a:hover,
 .site-nav a.active {
-  color: var(--blue);
+  color: var(--accent);
+  text-shadow: 0 0 14px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.site-nav a[href="index.html"]:hover,
+.site-nav a[href="index.html"].active {
+  color: var(--photoshop-blue);
+}
+
+.site-nav a[href="segments.html"]:hover,
+.site-nav a[href="segments.html"].active {
+  color: var(--premiere-purple);
+}
+
+.site-nav a[href="animations.html"]:hover,
+.site-nav a[href="animations.html"].active {
+  color: var(--animation-red);
+}
+
+.site-nav a[href="commercial-parodies.html"]:hover,
+.site-nav a[href="commercial-parodies.html"].active {
+  color: var(--illustrator-orange);
+}
+
+.site-nav a[href="reel.html"]:hover,
+.site-nav a[href="reel.html"].active {
+  color: var(--animate-green);
+}
+
+.site-nav a[href="resume.html"]:hover,
+.site-nav a[href="resume.html"].active {
+  color: var(--resume-yellow);
+}
+
+.site-nav a[href="contact.html"]:hover,
+.site-nav a[href="contact.html"].active {
+  color: var(--stock-white);
 }
 
 .page-section {
-  min-height: calc(100vh - 110px);
+  min-height: calc(100vh - 104px);
   padding: 80px 56px;
+}
+
+/* PAGE-SPECIFIC ACCENTS */
+
+body:has(a[href="index.html"].active) {
+  --accent: var(--photoshop-blue);
+}
+
+body:has(a[href="segments.html"].active) {
+  --accent: var(--premiere-purple);
+}
+
+body:has(a[href="animations.html"].active) {
+  --accent: var(--animation-red);
+}
+
+body:has(a[href="commercial-parodies.html"].active) {
+  --accent: var(--illustrator-orange);
+}
+
+body:has(a[href="reel.html"].active) {
+  --accent: var(--animate-green);
+}
+
+body:has(a[href="resume.html"].active) {
+  --accent: var(--resume-yellow);
+}
+
+body:has(a[href="contact.html"].active) {
+  --accent: var(--stock-white);
 }
 
 /* ABOUT / HOME PAGE */
 
 .about-section {
   display: grid;
-  grid-template-columns: 430px 1fr;
-  gap: 70px;
+  grid-template-columns: 410px 1fr;
+  gap: 76px;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .profile-card {
-  background: var(--card);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 15%, transparent), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.08), transparent 34%),
+    var(--panel);
   text-align: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
   overflow: hidden;
 }
 
@@ -118,32 +216,37 @@ body {
   height: 210px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center center;
   margin-top: 55px;
+  border: 1px solid var(--line);
 }
 
 .profile-card h1 {
   font-size: 32px;
   line-height: 1.05;
   margin: 28px 0 20px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .small-line {
-  width: 48px;
-  height: 3px;
-  background: var(--blue);
+  width: 58px;
+  height: 4px;
+  background: var(--accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 50%, transparent);
   margin: 0 auto 28px;
 }
 
 .profile-title {
-  text-transform: uppercase;
-  letter-spacing: 8px;
-  font-size: 15px;
+  color: var(--muted);
+  letter-spacing: 0.16em;
+  font-size: 14px;
+  font-weight: 400;
   margin-bottom: 48px;
 }
 
 .social-links {
-  background: var(--white);
+  background: #0c0f13;
+  border-top: 1px solid var(--line);
   padding: 20px;
   display: flex;
   justify-content: center;
@@ -151,28 +254,38 @@ body {
 }
 
 .social-links a {
-  color: var(--text);
-  font-weight: 800;
+  color: var(--muted);
+  font-weight: 500;
   text-decoration: none;
   font-size: 14px;
 }
 
+.social-links a:hover {
+  color: var(--accent);
+}
+
 .intro-content h2 {
-  font-size: 88px;
+  font-size: 82px;
   line-height: 0.95;
   margin: 0 0 24px;
-  font-weight: 900;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .intro-tagline {
-  font-size: 28px;
+  color: var(--muted);
+  font-size: 26px;
+  line-height: 1.2;
   margin-bottom: 36px;
+  font-weight: 500;
 }
 
 .intro-content p {
+  color: var(--muted);
   font-size: 19px;
-  line-height: 1.55;
-  max-width: 560px;
+  line-height: 1.62;
+  max-width: 610px;
+  font-weight: 300;
 }
 
 .button-row {
@@ -186,21 +299,30 @@ body {
   padding: 10px 22px;
   border-radius: 999px;
   text-decoration: none;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-weight: 600;
   font-size: 14px;
 }
 
 .primary-button {
-  background: var(--blue);
-  color: var(--white);
-  border: 2px solid var(--blue);
+  background: var(--accent);
+  color: var(--background);
+  border: 2px solid var(--accent);
+}
+
+.primary-button:hover {
+  background: transparent;
+  color: var(--accent);
 }
 
 .secondary-button {
-  background: var(--white);
+  background: transparent;
   color: var(--text);
-  border: 2px solid var(--text);
+  border: 2px solid var(--line);
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* GENERAL CONTENT PAGES */
@@ -217,11 +339,15 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
+  font-weight: 800;
 }
 
 .section-intro {
+  color: var(--muted);
   font-size: 20px;
+  line-height: 1.5;
   margin-bottom: 40px;
+  font-weight: 300;
 }
 
 .card-grid {
@@ -232,28 +358,37 @@ body {
 
 .work-card,
 .resume-card {
-  background: var(--white);
+  background: var(--panel);
   padding: 36px;
+  border: 1px solid var(--line);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .video-placeholder,
 .large-video-placeholder {
-  background: #d6d6d6;
+  background: var(--panel-light);
   min-height: 220px;
   display: grid;
   place-items: center;
-  font-weight: 900;
+  font-weight: 600;
   margin-bottom: 24px;
+  color: var(--muted);
 }
 
 .large-video-placeholder {
   min-height: 460px;
 }
 
-/* SEGMENTS / PORTFOLIO STYLE PAGES */
+/* PORTFOLIO STYLE PAGES */
 
 .portfolio-page {
-  background: var(--blue-page);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 18%, transparent), transparent 30%),
+    radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 10%, transparent), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.035), transparent 28%),
+    var(--background);
   max-width: none;
   margin: 0;
   padding-top: 70px;
@@ -266,59 +401,69 @@ body {
 }
 
 .portfolio-page h1 {
-  font-size: 24px;
+  font-size: 34px;
   line-height: 1;
   margin: 0 0 28px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-weight: 800;
 }
 
 .portfolio-page h1 .blue-square {
-  width: 12px;
-  height: 12px;
-  background: var(--red);
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
 }
 
 .portfolio-intro {
-  font-size: 13px;
-  line-height: 1.5;
-  margin: 0 0 32px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0 0 34px;
+  max-width: 680px;
+  font-weight: 300;
 }
 
 .media-row {
-  background: #fff8f2;
+  background: var(--panel);
   display: grid;
   grid-template-columns: 360px 1fr;
   margin-bottom: 48px;
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--line);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .media-copy {
-  padding: 28px;
-  border-left: 6px solid var(--red);
+  padding: 30px;
+  border-left: 6px solid var(--accent);
 }
 
 .media-copy h2 {
-  font-size: 17px;
-  line-height: 1.1;
-  margin: 0 0 8px;
-  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  font-weight: 800;
 }
 
 .media-role {
-  font-weight: 800;
-  font-size: 12px;
+  font-weight: 600;
+  font-size: 13px;
   margin: 0 0 18px;
+  color: var(--accent);
 }
 
 .media-copy p {
-  font-size: 13px;
-  line-height: 1.5;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 300;
 }
 
 .media-video {
-  background: #e8ded2;
+  background: #05070a;
 }
 
 .media-video video {
@@ -328,6 +473,14 @@ body {
   object-fit: cover;
   display: block;
   cursor: pointer;
+}
+
+.media-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 420px;
+  border: 0;
+  display: block;
 }
 
 /* RESUME */
@@ -347,23 +500,27 @@ body {
 }
 
 .resume-card h3 {
-  color: var(--blue);
+  color: var(--accent);
   font-size: 24px;
   margin-top: 0;
+  font-weight: 800;
 }
 
 /* CONTACT */
 
 .contact-section a {
-  color: var(--blue);
+  color: var(--accent);
 }
 
 /* FOOTER */
 
 .site-footer {
-  background: var(--white);
+  background: rgba(17, 19, 21, 0.92);
+  border-top: 1px solid var(--line);
   padding: 28px 56px;
   font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
 }
 
 /* RESPONSIVE */
@@ -400,6 +557,14 @@ body {
     flex-direction: column;
     gap: 20px;
   }
+
+  .media-row {
+    grid-template-columns: 1fr;
+  }
+
+  .media-video iframe {
+    min-height: 320px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -423,20 +588,9 @@ body {
     max-width: 100%;
   }
 
-  .media-row {
-    grid-template-columns: 1fr;
-  }
-
-  .media-video video {
+  .media-video video,
+  .media-video iframe {
     min-height: 220px;
     aspect-ratio: 16 / 9;
   }
-}
-
-.media-video iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  min-height: 420px;
-  border: 0;
-  display: block;
 }
