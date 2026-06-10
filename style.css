@@ -2,27 +2,27 @@
 
 :root {
   --accent: #31a8ff;
-  --accent-dark: #0b0f14;
 
   --photoshop-blue: #31a8ff;
   --premiere-purple: #9999ff;
   --animation-red: #ff3366;
   --illustrator-orange: #ff9a2f;
-  --animate-green: #7bd23c;
   --resume-yellow: #ffd84d;
-  --stock-white: #f5f5f5;
+  --contact-green: #7bd23c;
 
   --background: #111315;
-  --background-soft: #1a1d20;
   --panel: #232629;
   --panel-light: #2b2f33;
-  --card: #1f2327;
+  --card: #232629;
 
   --text: #f4f4f2;
   --muted: #b5b8bc;
-  --subtle: #7f858c;
   --line: #343941;
-  --shadow: rgba(0, 0, 0, 0.38);
+
+  --card-radius: 18px;
+  --card-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.35),
+    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 * {
@@ -45,6 +45,82 @@ body {
   font-weight: 400;
 }
 
+/* PAGE ACCENTS */
+
+body:has(a[href="index.html"].active) {
+  --accent: var(--photoshop-blue);
+}
+
+body:has(a[href="segments.html"].active) {
+  --accent: var(--premiere-purple);
+}
+
+body:has(a[href="animations.html"].active) {
+  --accent: var(--animation-red);
+}
+
+body:has(a[href="commercial-parodies.html"].active) {
+  --accent: var(--illustrator-orange);
+}
+
+body:has(a[href="resume.html"].active) {
+  --accent: var(--resume-yellow);
+}
+
+body:has(a[href="contact.html"].active) {
+  --accent: var(--contact-green);
+}
+
+/* GLOBAL */
+
+.page-section {
+  min-height: calc(100vh - 104px);
+  padding: 80px 56px;
+}
+
+.blue-square,
+.red-square {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background: var(--accent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 50%, transparent);
+  flex: 0 0 auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.primary-button {
+  background: var(--accent);
+  color: var(--background);
+  border: 2px solid var(--accent);
+}
+
+.primary-button:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+.secondary-button {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--line);
+}
+
+.secondary-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* HEADER */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -62,8 +138,13 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 17px;
+  gap: 14px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
 }
 
 .brand-name {
@@ -79,23 +160,12 @@ body {
 }
 
 .brand-title {
-  color: var(--muted);
+  font-size: 13px;
   font-weight: 400;
-  letter-spacing: 0.04em;
-}
-
-.slash {
-  color: var(--subtle);
-}
-
-.blue-square,
-.red-square {
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  background: var(--accent);
-  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 50%, transparent);
-  flex: 0 0 auto;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3px;
 }
 
 .site-nav {
@@ -137,11 +207,6 @@ body {
   color: var(--illustrator-orange);
 }
 
-.site-nav a[href="reel.html"]:hover,
-.site-nav a[href="reel.html"].active {
-  color: var(--animate-green);
-}
-
 .site-nav a[href="resume.html"]:hover,
 .site-nav a[href="resume.html"].active {
   color: var(--resume-yellow);
@@ -149,51 +214,16 @@ body {
 
 .site-nav a[href="contact.html"]:hover,
 .site-nav a[href="contact.html"].active {
-  color: var(--stock-white);
+  color: var(--contact-green);
 }
 
-.page-section {
-  min-height: calc(100vh - 104px);
-  padding: 80px 56px;
-}
-
-/* PAGE-SPECIFIC ACCENTS */
-
-body:has(a[href="index.html"].active) {
-  --accent: var(--photoshop-blue);
-}
-
-body:has(a[href="segments.html"].active) {
-  --accent: var(--premiere-purple);
-}
-
-body:has(a[href="animations.html"].active) {
-  --accent: var(--animation-red);
-}
-
-body:has(a[href="commercial-parodies.html"].active) {
-  --accent: var(--illustrator-orange);
-}
-
-body:has(a[href="reel.html"].active) {
-  --accent: var(--animate-green);
-}
-
-body:has(a[href="resume.html"].active) {
-  --accent: var(--resume-yellow);
-}
-
-body:has(a[href="contact.html"].active) {
-  --accent: var(--stock-white);
-}
-
-/* ABOUT / HOME PAGE */
+/* ABOUT PAGE */
 
 .about-section {
   display: grid;
   grid-template-columns: 410px 1fr;
   gap: 76px;
-  align-items: center;
+  align-items: start;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -202,12 +232,12 @@ body:has(a[href="contact.html"].active) {
   background:
     radial-gradient(circle at top left, color-mix(in srgb, var(--accent) 15%, transparent), transparent 34%),
     radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.08), transparent 34%),
-    var(--panel);
+    var(--card);
   text-align: center;
   border: 1px solid var(--line);
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.35),
-    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
 }
 
@@ -272,14 +302,6 @@ body:has(a[href="contact.html"].active) {
   letter-spacing: -0.03em;
 }
 
-.intro-tagline {
-  color: var(--muted);
-  font-size: 26px;
-  line-height: 1.2;
-  margin-bottom: 36px;
-  font-weight: 500;
-}
-
 .intro-content p {
   color: var(--muted);
   font-size: 19px;
@@ -288,100 +310,56 @@ body:has(a[href="contact.html"].active) {
   font-weight: 300;
 }
 
-.button-row {
-  display: flex;
-  gap: 12px;
-  margin-top: 34px;
+.homepage-reel {
+  max-width: 1180px;
+  margin: 80px auto 0;
+  text-align: center;
 }
 
-.button {
-  display: inline-block;
-  padding: 10px 22px;
-  border-radius: 999px;
+.reel-heading {
+  text-align: center;
+  margin: 40px 0 18px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.about-reel {
+  width: 100%;
+  max-width: 900px;
+  margin: 24px auto 0;
+}
+
+.about-reel iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--card-radius);
+  display: block;
+  box-shadow: var(--card-shadow);
+}
+
+.about-cta {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.about-cta p {
+  font-size: 20px;
+  margin: 0;
+}
+
+.about-cta a {
+  color: var(--accent);
   text-decoration: none;
   font-weight: 600;
-  font-size: 14px;
 }
 
-.primary-button {
-  background: var(--accent);
-  color: var(--background);
-  border: 2px solid var(--accent);
+.about-cta a:hover {
+  text-decoration: underline;
 }
 
-.primary-button:hover {
-  background: transparent;
-  color: var(--accent);
-}
-
-.secondary-button {
-  background: transparent;
-  color: var(--text);
-  border: 2px solid var(--line);
-}
-
-.secondary-button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* GENERAL CONTENT PAGES */
-
-.content-section {
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.content-section h2 {
-  font-size: 42px;
-  line-height: 1;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-weight: 800;
-}
-
-.section-intro {
-  color: var(--muted);
-  font-size: 20px;
-  line-height: 1.5;
-  margin-bottom: 40px;
-  font-weight: 300;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 34px;
-}
-
-.work-card,
-.resume-card {
-  background: var(--panel);
-  padding: 36px;
-  border: 1px solid var(--line);
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.35),
-    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
-}
-
-.video-placeholder,
-.large-video-placeholder {
-  background: var(--panel-light);
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  font-weight: 600;
-  margin-bottom: 24px;
-  color: var(--muted);
-}
-
-.large-video-placeholder {
-  min-height: 460px;
-}
-
-/* PORTFOLIO STYLE PAGES */
+/* PORTFOLIO / VIDEO PAGES */
 
 .portfolio-page {
   background:
@@ -395,25 +373,23 @@ body:has(a[href="contact.html"].active) {
   padding-bottom: 90px;
 }
 
-.portfolio-inner {
+.portfolio-inner,
+.resume-page-inner,
+.contact-page-inner {
   max-width: 1180px;
   margin: 0 auto;
 }
 
-.portfolio-page h1 {
-  font-size: 34px;
+.portfolio-page h1,
+.resume-page-header h1,
+.contact-page-inner h1 {
+  font-size: 38px;
   line-height: 1;
   margin: 0 0 28px;
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 800;
-}
-
-.portfolio-page h1 .blue-square {
-  width: 13px;
-  height: 13px;
-  background: var(--accent);
 }
 
 .portfolio-intro {
@@ -426,19 +402,19 @@ body:has(a[href="contact.html"].active) {
 }
 
 .media-row {
-  background: var(--panel);
+  background: var(--card);
   display: grid;
   grid-template-columns: 360px 1fr;
   margin-bottom: 48px;
   border: 1px solid var(--line);
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.35),
-    0 0 24px color-mix(in srgb, var(--accent) 15%, transparent);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
 }
 
 .media-copy {
   padding: 30px;
-  border-left: 6px solid var(--accent);
 }
 
 .media-copy h2 {
@@ -466,15 +442,7 @@ body:has(a[href="contact.html"].active) {
   background: #05070a;
 }
 
-.media-video video {
-  width: 100%;
-  height: 100%;
-  min-height: 190px;
-  object-fit: cover;
-  display: block;
-  cursor: pointer;
-}
-
+.media-video video,
 .media-video iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -483,20 +451,40 @@ body:has(a[href="contact.html"].active) {
   display: block;
 }
 
-/* RESUME */
+.media-video video {
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
 
-.resume-top {
+/* RESUME PAGE */
+
+.resume-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 36px;
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.resume-section-title {
+  font-size: 20px;
+  margin: 44px 0 22px;
+  color: var(--text);
 }
 
 .resume-card {
+  background: var(--card);
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 50px;
-  margin-bottom: 34px;
+  margin-bottom: 28px;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
 }
 
 .resume-card h3 {
@@ -506,9 +494,63 @@ body:has(a[href="contact.html"].active) {
   font-weight: 800;
 }
 
-/* CONTACT */
+.resume-card p {
+  color: var(--muted);
+  line-height: 1.55;
+}
 
-.contact-section a {
+.resume-role {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.resume-date {
+  color: var(--muted);
+  font-weight: 300;
+  margin: 0;
+}
+
+/* CONTACT PAGE */
+
+.contact-intro {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 700px;
+}
+
+.contact-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+.contact-item {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+.contact-item h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.contact-item a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.contact-item a:hover {
   color: var(--accent);
 }
 
@@ -539,7 +581,9 @@ body:has(a[href="contact.html"].active) {
     gap: 16px;
   }
 
-  .about-section {
+  .about-section,
+  .media-row,
+  .resume-card {
     grid-template-columns: 1fr;
   }
 
@@ -547,19 +591,10 @@ body:has(a[href="contact.html"].active) {
     font-size: 58px;
   }
 
-  .card-grid,
-  .resume-card {
-    grid-template-columns: 1fr;
-  }
-
-  .resume-top {
+  .resume-page-header {
     align-items: flex-start;
     flex-direction: column;
     gap: 20px;
-  }
-
-  .media-row {
-    grid-template-columns: 1fr;
   }
 
   .media-video iframe {
@@ -581,16 +616,17 @@ body:has(a[href="contact.html"].active) {
   }
 
   .brand-title {
-    font-size: 14px;
+    font-size: 13px;
   }
 
-  .portfolio-inner {
+  .portfolio-inner,
+  .resume-page-inner,
+  .contact-page-inner {
     max-width: 100%;
   }
 
   .media-video video,
   .media-video iframe {
     min-height: 220px;
-    aspect-ratio: 16 / 9;
   }
 }
