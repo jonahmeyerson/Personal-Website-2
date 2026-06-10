@@ -402,51 +402,48 @@ body:has(a[href="contact.html"].active) {
 }
 
 .media-row {
+  max-width: 850px;
+  margin: 0 auto 48px;
+
   background: var(--card);
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  margin-bottom: 48px;
+
   border: 1px solid var(--line);
   border-left: 6px solid var(--accent);
+
   border-radius: var(--card-radius);
+
   box-shadow: var(--card-shadow);
+
   overflow: hidden;
 }
 
-.media-copy {
-  padding: 30px;
-}
+.media-title {
+  margin: 0;
+  padding: 22px 28px;
 
-.media-copy h2 {
-  font-size: 22px;
-  line-height: 1.15;
-  margin: 0 0 10px;
-  font-weight: 800;
-}
+  font-size: 24px;
+  font-weight: 700;
 
-.media-role {
-  font-weight: 600;
-  font-size: 13px;
-  margin: 0 0 18px;
-  color: var(--accent);
-}
+  color: var(--text);
 
-.media-copy p {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.55;
-  font-weight: 300;
+  text-align: center;
+
+  border-bottom: 1px solid var(--line);
 }
 
 .media-video {
   background: #05070a;
 }
 
-.media-video video,
+.media-video {
+  padding: 28px;
+  background: transparent;
+}
+
 .media-video iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  min-height: 420px;
+
   border: 0;
   display: block;
 }
@@ -582,7 +579,6 @@ body:has(a[href="contact.html"].active) {
   }
 
   .about-section,
-  .media-row,
   .resume-card {
     grid-template-columns: 1fr;
   }
